@@ -1,0 +1,48 @@
+<!--Toolbar Section With ADD Article Button-->
+<div class="toolbar-section">
+    <mat-toolbar class="toolbar "color="primary" >
+    <span><button button mat-raised-button mat-flat-button color="primary">Add Article</button></span>
+    <span class="example-fill-remaining-space">Article Application</span>
+    </mat-toolbar>
+    
+</div>
+
+<!--TAB SECTION WITH ARTILCE LIST TAB AND ARTICLE DETAILS-->
+<div class="tab-section">
+      <mat-tab-group>
+        <span><mat-tab label="Article List">
+<!--LIST TAB SECTION WITH ACRTILCE ID AND ARTILCE NAME-->          
+        <div class="article-list">
+          <app-article-details></app-article-details>
+            <table>
+                <tr>
+                  <th>Id</th>
+                  <th>ARTICLE NO</th>
+                  <th>ARTICLE NAME</th>
+                  <!-- <th>Email</th>
+                  <th>Body</th> -->
+                </tr>
+                <tr *ngFor= "let com of lstcomments">
+                  <td>{{com.id}}</td>
+                  <td>{{com.postId}}
+                      <!-- <div *ngIf="row ; else elseBlock"></div> -->
+                  </td>
+                  <td><input type="test" value={{com.name}}></td>
+                  <!-- <td>{{com.email}}</td>
+                  <td>{{com.body}}</td> -->
+              
+                </tr>
+              </table>
+        </div>
+        </mat-tab>
+        </span>
+       
+        <span>
+          <mat-tab label="Article Details"> Article Details </mat-tab>
+        </span>
+    
+      </mat-tab-group>
+</div>
+
+<div class="article-detail"></div>
+
