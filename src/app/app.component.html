@@ -1,7 +1,7 @@
 <!--Toolbar Section With ADD Article Button-->
 <div class="toolbar-section">
     <mat-toolbar class="toolbar "color="primary" >
-    <span><button button mat-raised-button mat-flat-button color="primary">Add Article</button></span>
+    <span><button mat-raised-button (click)="openDialog('Add',{})" mat-flat-button color="primary">Add Article</button></span>
     <span class="example-fill-remaining-space">Article Application</span>
     </mat-toolbar>
     
@@ -13,36 +13,61 @@
         <span><mat-tab label="Article List">
 <!--LIST TAB SECTION WITH ACRTILCE ID AND ARTILCE NAME-->          
         <div class="article-list">
-          <app-article-details></app-article-details>
-            <table>
+            
+            <table  class="table-section">
+                
                 <tr>
                   <th>Id</th>
                   <th>ARTICLE NO</th>
                   <th>ARTICLE NAME</th>
+                  <th>UnitCost</th>
+                  <th>Quantity</th>
+                  <th>CalculatedValue</th>
+                  
                   <!-- <th>Email</th>
                   <th>Body</th> -->
                 </tr>
-                <tr *ngFor= "let com of lstcomments">
-                  <td>{{com.id}}</td>
+                <tr *ngFor= "let com of lstcomments ;  let i = index">
+                  <td (click)="data(com.id)">{{com.id}}</td>
                   <td>{{com.postId}}
                       <!-- <div *ngIf="row ; else elseBlock"></div> -->
                   </td>
-                  <td><input type="test" value={{com.name}}></td>
-                  <!-- <td>{{com.email}}</td>
-                  <td>{{com.body}}</td> -->
+                  <td><input type="text" value={{com.name}}></td>
+                  <td><input [(ngModel)]="com.unitCost" type="text" value=15></td>
+                  <td><input type="text" name="quantity" [(ngModel)]="com.quantity"  (blur)="calculateRowTotal(i)"></td>
+                  <td><input value= "{{com.unitCost * com.quantity }}" type="text" ></td>
+                  <!-- <td><input type="test" value={{com.name}}></td> -->
+                 
               
                 </tr>
+
               </table>
+              <div class="details-section">
+           
+                
+              </div>
+              
         </div>
         </mat-tab>
         </span>
        
         <span>
-          <mat-tab label="Article Details"> Article Details </mat-tab>
+          <mat-tab label="Article Details"> 
+            <div class="article-detail">
+              Id:<p>{{lstcomments[this.check].id}}</p>
+              Name:<p>{{lstcomments[this.check].name}}</p>
+              PostId:<p>{{lstcomments[this.check].postId}}</p>
+              Email:<p>{{lstcomments[this.check].email}}</p>
+              Body:<p>{{lstcomments[this.check].body}}</p>
+              UnitCost:<p>{{lstcomments[this.check].unitCost}}</p>
+              Quantity:<p>{{lstcomments[this.check].quantity}}</p>
+              Total:<p>{{lstcomments[this.check].calculateValue}}</p>
+            </div>
+          </mat-tab>
         </span>
     
       </mat-tab-group>
 </div>
 
-<div class="article-detail"></div>
+
 

@@ -3,3 +3,17 @@
 .example-fill-remaining-space{
     margin: 0 auto;
     }
+    .table-section{
+        width: 50%;
+        float: left;
+        text-align: center; 
+    }
+    .details-section{
+        width: 50%;
+        
+        float: left;
+    }
+
+    th, td {
+        border: 1px solid black;
+    }
